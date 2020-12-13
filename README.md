@@ -1,4 +1,6 @@
 # musa-client
+[![Build Status](https://travis-ci.org/hellman-and-hero/musa-client.svg?branch=master)](https://travis-ci.org/hellman-and-hero/musa-client)
+[![Dependabot Status](https://api.dependabot.com/badges/status?host=github&repo=hellman-and-hero/musa-client)](https://dependabot.com)
 
 This is the *M*ost *U*gly *S*wing *A*pplication. But "*U*" could also stand for useless, unfeasible or something similar. 
 
