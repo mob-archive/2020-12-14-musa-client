@@ -23,7 +23,7 @@ import musa.fwk.TitleProvider;
  */
 public class StockPanel extends AbstractPanel implements TitleProvider {
 
-	private static final long serialVersionUID = 6523015166272363631L;
+    private static final long serialVersionUID = 6523015166272363631L;
 
 	private static final int MIN = 0;
 	private static final int MAX = 100;
