@@ -14,9 +14,6 @@ public class ValuesToLedConverter {
     }
 
     List<String> getLedColors(int level) {
-        if (level == 0) {
-            return Collections.emptyList();
-        }
-        return IntStream.range(0, numberOfLedsInRing).mapToObj(index -> Color_White).collect(Collectors.toList());
+        return IntStream.range(0, numberOfLedsInRing).mapToObj(index -> index <= (level / numberOfLedsInRing) ? Color_White : "#000000").collect(Collectors.toList());
     }
 }

@@ -10,13 +10,15 @@ class ValuesToLedConverterTest {
     void whenProfibilityIsZeroNoLedsAreLit() {
         List<String> ledColors = new ValuesToLedConverter(4).getLedColors(0);
 
-        Assertions.assertThat(ledColors).isEmpty();
+        Assertions.assertThat(ledColors)
+                .hasSize(4)
+                .containsOnly("#000000");
     }
 
     @Test
-    void whenProfibilityIsZeroNoLedsAreLit2() {
+    void alwaysReturnColorsForAllLeds() {
         List<String> ledColors = new ValuesToLedConverter(4).getLedColors(0);
 
-        Assertions.assertThat(ledColors).isEmpty();
+        Assertions.assertThat(ledColors).hasSize(4);
     }
 }
