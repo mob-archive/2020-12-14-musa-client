@@ -3,6 +3,7 @@ package musa.stock;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 
 public class SystemUnderTest {
@@ -16,7 +17,7 @@ public class SystemUnderTest {
         TestConsumer consumer = new TestConsumer();
         new SystemUnder(consumer).nike(values);
 
-        assertEquals(0, consumer.sendMessages.size());
+        assertThat(consumer.sendMessages).isEmpty();
     }
 
     @Test
