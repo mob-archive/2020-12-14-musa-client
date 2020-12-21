@@ -32,4 +32,26 @@ class ValuesToLedConverterTest {
         );
     }
 
+    @Test
+    void ledRingWith16LedsTurnOn4ForLevel25() {
+        assertThat(new ValuesToLedConverter(16).getLedColors(25))
+                .containsExactly(
+                        White,
+                        White,
+                        White,
+                        White,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black,
+                        Black
+                );
+    }
 }
