@@ -5,6 +5,8 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
+import static musa.stock.ValuesToLedConverter.ColorBlack;
+
 class ValuesToLedConverterTest {
     @Test
     void whenProfibilityIsZeroNoLedsAreLit() {
@@ -12,7 +14,7 @@ class ValuesToLedConverterTest {
 
         Assertions.assertThat(ledColors)
                 .hasSize(4)
-                .containsOnly("#000000");
+                .containsOnly(ColorBlack);
     }
 
     @Test

@@ -6,7 +6,8 @@ import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 public class ValuesToLedConverter {
-    public static String Color_White = "#FFFFFF";
+    public static final String ColorBlack = "#000000";
+    public static final String Color_White = "#FFFFFF";
     private final int numberOfLedsInRing;
 
     public ValuesToLedConverter(int numberOfLedsInRing) {
@@ -14,6 +15,14 @@ public class ValuesToLedConverter {
     }
 
     List<String> getLedColors(int level) {
-        return IntStream.range(0, numberOfLedsInRing).mapToObj(index -> index <= (level / numberOfLedsInRing) ? Color_White : "#000000").collect(Collectors.toList());
+        return IntStream.range(0, numberOfLedsInRing)
+                .mapToObj(index -> {
+                    if (level == 0) {
+                        return ColorBlack;
+                    } else {
+                        return Color_White;
+                    }
+                })
+                .collect(Collectors.toList());
     }
 }
