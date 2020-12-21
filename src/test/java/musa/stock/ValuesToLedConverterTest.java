@@ -5,12 +5,17 @@ import org.junit.jupiter.api.Test;
 
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.*;
-
 class ValuesToLedConverterTest {
     @Test
     void whenProfibilityIsZeroNoLedsAreLit() {
-        List<String> ledColors = new ValuesToLedConverter().getLedColors(0);
+        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(0);
+
+        Assertions.assertThat(ledColors).isEmpty();
+    }
+
+    @Test
+    void whenProfibilityIsZeroNoLedsAreLit2() {
+        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(0);
 
         Assertions.assertThat(ledColors).isEmpty();
     }

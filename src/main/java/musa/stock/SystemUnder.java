@@ -21,7 +21,7 @@ class SystemUnder {
             return;
         }
 
-        List<String> ledColors = new ValuesToLedConverter().getLedColors(values.profibility);
+        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(values.profibility);
 
         for (int ledIndex = 0; ledIndex < ledColors.size(); ledIndex++) {
             String color = Color_White;
