@@ -20,12 +20,9 @@ class SystemUnder {
             return;
         }
 
-
-        consumer.accept(new MqttConsumer.Message("some/led/0/rgb", Color_White, false));
-        consumer.accept(new MqttConsumer.Message("some/led/1/rgb", Color_White, false));
-        consumer.accept(new MqttConsumer.Message("some/led/2/rgb", Color_White, false));
-        consumer.accept(new MqttConsumer.Message("some/led/3/rgb", Color_White, false));
-
-
+        for (int ledIndex = 0; ledIndex < 4; ledIndex++) {
+            String color = Color_White;
+            consumer.accept(new MqttConsumer.Message("some/led/" + ledIndex + "/rgb", color, false));
+        }
     }
 }
