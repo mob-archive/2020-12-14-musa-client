@@ -1,44 +1,35 @@
 package musa.stock;
 
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
+import org.junit.jupiter.params.ParameterizedTest;
+import org.junit.jupiter.params.provider.Arguments;
 import org.junit.jupiter.params.provider.MethodSource;
-import org.junit.jupiter.params.provider.ValueSource;
 
+import java.util.Arrays;
 import java.util.List;
+import java.util.stream.Stream;
 
-import static musa.stock.ValuesToLedConverter.ColorBlack;
-import static musa.stock.ValuesToLedConverter.ColorWhite;
+import static musa.stock.ValuesToLedConverter.Black;
+import static musa.stock.ValuesToLedConverter.White;
+import static org.assertj.core.api.Assertions.assertThat;
 
 class ValuesToLedConverterTest {
-    @Test
-    void whenProfibilityIsZeroNoLedsAreLit() {
-        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(0);
 
-        Assertions.assertThat(ledColors)
-                .hasSize(4)
-                .containsOnly(ColorBlack);
+    @ParameterizedTest
+    @MethodSource("valueToLedColorExamplesFor_4_LedRing")
+    void turnOnHalfOfTheLedForAValueOf51(int value, List<String> ledColors) {
+        assertThat(new ValuesToLedConverter(4).getLedColors(value))
+                .containsExactlyElementsOf(ledColors);
     }
 
-    @Test
-    void alwaysReturnColorsForAllLeds() {
-        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(0);
-
-        Assertions.assertThat(ledColors).hasSize(4);
-    }
-
-    @Test
-    void turnOnHalfOfTheLedForAValueOf50() {
-        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(50);
-
-        Assertions.assertThat(ledColors).containsExactly(ColorWhite, ColorWhite, ColorBlack, ColorBlack);
-    }
-
-    @Test
-    void turnOnHalfOfTheLedForAValueOf51() {
-        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(51);
-
-        Assertions.assertThat(ledColors).containsExactly(ColorWhite, ColorWhite, ColorWhite, ColorBlack);
+    private static Stream<Arguments> valueToLedColorExamplesFor_4_LedRing() {
+        return Stream.of(
+                Arguments.of(0, Arrays.asList(Black, Black, Black, Black)),
+                Arguments.of(50, Arrays.asList(White, White, Black, Black)),
+                Arguments.of(51, Arrays.asList(White, White, White, Black)),
+                Arguments.of(76, Arrays.asList(White, White, White, White)),
+                Arguments.of(100, Arrays.asList(White, White, White, White))
+        );
     }
 
 }
