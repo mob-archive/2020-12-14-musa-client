@@ -6,6 +6,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 import static musa.stock.ValuesToLedConverter.ColorBlack;
+import static musa.stock.ValuesToLedConverter.ColorWhite;
 
 class ValuesToLedConverterTest {
     @Test
@@ -23,4 +24,12 @@ class ValuesToLedConverterTest {
 
         Assertions.assertThat(ledColors).hasSize(4);
     }
+
+    @Test
+    void turnOnHalfOfTheLedForAValueOf50() {
+        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(50);
+
+        Assertions.assertThat(ledColors).containsExactly(ColorWhite, ColorWhite, ColorBlack, ColorBlack);
+    }
+
 }
