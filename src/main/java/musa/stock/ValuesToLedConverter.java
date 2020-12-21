@@ -16,13 +16,10 @@ public class ValuesToLedConverter {
     List<String> getLedColors(int level) {
         return IntStream.range(0, numberOfLedsInRing)
                 .mapToObj(index -> {
-                    if (level / 100 * numberOfLedsInRing < index) {
-
-                    }
-                    if (level == 0) {
-                        return ColorBlack;
-                    } else {
+                    if (index < level / 100.0 * numberOfLedsInRing) {
                         return ColorWhite;
+                    } else {
+                        return ColorBlack;
                     }
                 })
                 .collect(Collectors.toList());
