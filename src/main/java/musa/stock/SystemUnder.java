@@ -24,8 +24,7 @@ class SystemUnder {
         List<String> ledColors = new ValuesToLedConverter(4).getLedColors(values.profibility);
 
         for (int ledIndex = 0; ledIndex < ledColors.size(); ledIndex++) {
-            String color = ledColors.get(ledIndex);
-            consumer.accept(new MqttConsumer.Message("some/led/" + ledIndex + "/rgb", color, false));
+            consumer.accept(new MqttConsumer.Message("some/led/" + ledIndex + "/rgb", ledColors.get(ledIndex), false));
         }
     }
 
