@@ -1,5 +1,6 @@
 package musa.stock;
 
+import java.util.List;
 import java.util.function.Consumer;
 
 class SystemUnder {
@@ -20,9 +21,12 @@ class SystemUnder {
             return;
         }
 
-        for (int ledIndex = 0; ledIndex < values.profibility / 25; ledIndex++) {
+        List<String> ledColors = new ValuesToLedConverter().getLedColors(values.profibility);
+
+        for (int ledIndex = 0; ledIndex < ledColors.size(); ledIndex++) {
             String color = Color_White;
             consumer.accept(new MqttConsumer.Message("some/led/" + ledIndex + "/rgb", color, false));
         }
     }
+
 }
