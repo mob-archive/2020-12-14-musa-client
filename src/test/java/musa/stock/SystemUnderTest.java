@@ -45,6 +45,7 @@ public class SystemUnderTest {
         assertMessage(consumer, 1, SystemUnder.Color_White);
         assertMessage(consumer, 2, SystemUnder.Color_White);
         assertMessage(consumer, 3, SystemUnder.Color_White);
+        assertEquals(4, consumer.sendMessages.size());
     }
 
     private void assertMessage(TestConsumer consumer, int index, String color) {

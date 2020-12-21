@@ -20,7 +20,7 @@ class SystemUnder {
             return;
         }
 
-        for (int ledIndex = 0; ledIndex < 4; ledIndex++) {
+        for (int ledIndex = 0; ledIndex < values.profibility / 25; ledIndex++) {
             String color = Color_White;
             consumer.accept(new MqttConsumer.Message("some/led/" + ledIndex + "/rgb", color, false));
         }
