@@ -15,7 +15,7 @@ public class SystemUnderTest {
         values.amount = 0;
 
         TestConsumer consumer = new TestConsumer();
-        new SystemUnder(consumer).nike(values);
+        new SystemUnder(consumer, new ValuesToLedConverter(4)).nike(values);
 
         assertThat(consumer.sendMessages).isEmpty();
     }
@@ -27,7 +27,7 @@ public class SystemUnderTest {
         values.amount = 0;
 
         TestConsumer consumer = new TestConsumer();
-        new SystemUnder(consumer).nike(values);
+        new SystemUnder(consumer, new ValuesToLedConverter(4)).nike(values);
 
         assertMessage(consumer, 0, SystemUnder.Color_White);
     }
@@ -39,7 +39,7 @@ public class SystemUnderTest {
         values.amount = 0;
 
         TestConsumer consumer = new TestConsumer();
-        new SystemUnder(consumer).nike(values);
+        new SystemUnder(consumer, new ValuesToLedConverter(4)).nike(values);
 
         assertMessage(consumer, 0, SystemUnder.Color_White);
         assertMessage(consumer, 1, SystemUnder.Color_White);

@@ -7,9 +7,11 @@ class SystemUnder {
     public static String Color_White = "#FFFFFF";
 
     private final Consumer<MqttConsumer.Message> consumer;
+    private final ValuesToLedConverter valuesToLedConverter;
 
-    public SystemUnder(Consumer<MqttConsumer.Message> consumer) {
+    public SystemUnder(Consumer<MqttConsumer.Message> consumer, ValuesToLedConverter valuesToLedConverter) {
         this.consumer = consumer;
+        this.valuesToLedConverter = valuesToLedConverter;
     }
 
     void nike(Values values) {
@@ -21,7 +23,7 @@ class SystemUnder {
             return;
         }
 
-        List<String> ledColors = new ValuesToLedConverter(4).getLedColors(values.profibility);
+        List<String> ledColors = valuesToLedConverter.getLedColors(values.profibility);
 
         for (int ledIndex = 0; ledIndex < ledColors.size(); ledIndex++) {
             consumer.accept(new MqttConsumer.Message("some/led/" + ledIndex + "/rgb", ledColors.get(ledIndex), false));
