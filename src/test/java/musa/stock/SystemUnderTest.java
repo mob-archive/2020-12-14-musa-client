@@ -54,5 +54,9 @@ public class SystemUnderTest {
         assertEquals("some/led/" + index + "/rgb", message.getTopic());
         assertEquals(color, message.getPayload());
     }
+
+
+
+
 }
 
